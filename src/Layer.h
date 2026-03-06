@@ -24,7 +24,7 @@ public:
     }
     virtual void keyPressed(char key){};
     virtual void keyReleased(char key){};
-    virtual void display(){};
+    virtual void run() = 0;
 };
 
 #endif

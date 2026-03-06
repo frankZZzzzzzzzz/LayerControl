@@ -19,7 +19,7 @@ private:
 
     static void threadTask(){
         while (running){
-            display();
+            run();
             std::this_thread::sleep_for(refreshPeriod);
         }
     }
@@ -66,7 +66,7 @@ public:
             (*(*it)).keyReleased(key);
     }
 
-    static void display(){
+    static void run(){
         std::forward_list<Layer*>::iterator it = LayerOrder.begin();
         
         while (it != LayerOrder.end() && (*(*it)).isTransparent){
@@ -75,7 +75,7 @@ public:
         }
 
         if (it != LayerOrder.end())
-            (*(*it)).display();
+            (*(*it)).run();
     }
     
     static bool isRunning(){
