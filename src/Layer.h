@@ -6,25 +6,19 @@
 #include "LayerStack.h"
 
 class Layer{
+private:
+    bool running;
 public:
-    bool isTransparent;
-    Layer (bool isTransparent = false)
-    : isTransparent{isTransparent}{
-        if (!LayerStack::isRunning()){
-            LayerStack::init();
-            LayerStack::addLayer(this);
-        }
-    }
+    Layer ();
 
-    void removeThisLayer(){
-        LayerStack::removeLayer();
-    }
-    void replaceThisLayer(Layer *otherLayer){
-        LayerStack::replaceLayer(otherLayer);
-    }
+    void stopLayer();
     virtual void keyPressed(char key){};
     virtual void keyReleased(char key){};
     virtual void run() = 0;
+
+    bool isRunning(){
+        return(running);
+    }
 };
 
 #endif
